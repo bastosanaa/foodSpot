@@ -8,6 +8,7 @@ import RestaurantsList from "../pages/RestaurantsList";
 import RestaurantDetails from "../pages/RestaurantDetails";
 import SplashPage from "../pages/SplashPage";
 import EventsPage from "../pages/EventsPage";
+import colors from "../styles/colors";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -16,7 +17,11 @@ const Stack = createNativeStackNavigator();
 const RestaurantsStack = () => {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="RestaurantsList" component={RestaurantsList} />
+        <Stack.Screen 
+          name="RestaurantsList" 
+          component={RestaurantsList} 
+          options={{ headerShown: false }} // Remove o header
+        />
         <Stack.Screen name="RestaurantDetails" component={RestaurantDetails} />
       </Stack.Navigator>
     );
@@ -34,15 +39,16 @@ const TabNavigator = () => {
               iconName = "home";
             } else if (route.name === "Restaurants") {
               iconName = "restaurant";
-            } else if (route.name=== "Events") {
-                iconName = "musical-notes";
+            } else if (route.name === "Events") {
+              iconName = "musical-notes";
             } else {
               iconName = "ellipse";
             }
             return <Ionicons name={iconName as any} size={size} color={color} />;
           },
-          tabBarActiveTintColor: "#ff5733", // Cor do ícone ativo
-          tabBarInactiveTintColor: "gray",
+          tabBarActiveTintColor: colors.primary, // Cor do ícone ativo
+          tabBarInactiveTintColor: colors.lightGrey,
+          tabBarStyle: { backgroundColor: colors.background , borderColor: colors.grey}, // Cor de fundo da tabbar
           headerShown: false, // Oculta a barra superior
         })}
       >

@@ -3,6 +3,7 @@ import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from "react
 import { useNavigation } from "@react-navigation/native";
 import appData from "../storage/appData";
 import { NavigationProps, Restaurant } from "../types/types";
+import colors from "../styles/colors";
 
 export default function RestaurantsList() {
   const navigation = useNavigation<NavigationProps>();
@@ -25,17 +26,15 @@ export default function RestaurantsList() {
     </View>
   );
 }
-
-
 const styles = StyleSheet.create({
   container: {
     paddingTop: 60,
     flex: 1,
-    backgroundColor: "#f8f8f8",
+    backgroundColor: colors.background,
     padding: 16,
   },
   card: {
-    backgroundColor: "#fff",
+    backgroundColor: colors.grey,
     borderRadius: 10,
     padding: 16,
     marginBottom: 12,
@@ -51,6 +50,6 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#333",
+    color: colors.textPrimary,
   },
 });

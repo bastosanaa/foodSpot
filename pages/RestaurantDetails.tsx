@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../types/types";
+import colors from "../styles/colors";
 
 type RestaurantDetailsRouteProp = RouteProp<RootStackParamList, "RestaurantDetails">;
 
@@ -24,6 +25,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+    color: colors.textPrimary,
+    backgroundColor: colors.background
   },
   logo: {
     width: 100,
@@ -34,10 +37,12 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 22,
     fontWeight: "bold",
+    color: colors.textPrimary,
   },
   description: {
     fontSize: 16,
     textAlign: "center",
     marginTop: 10,
+    color: colors.textPrimary,
   },
 });

@@ -41,6 +41,7 @@ type SocialMedia = {
       phone: string;
       whatsapp: string;
       social_media: SocialMedia;
+      image: string;
       website: string;
       email: string;
     };
@@ -60,6 +61,7 @@ type SocialMedia = {
         instagram: "https://instagram.com/foodSpotfoodhall",
         facebook: "https://facebook.com/foodSpotfoodhall"
       },
+      image: "https://www.wien.info/resource/image/470174/3x2/894/595/fb10aecdcfd02203aa892ead5c061127/949E088108A12037085379002498FFEF/gleisgarten-food-hall.webp",
       website: "https://foodSpotfoodhall.com.br",
       email: "contato@foodSpotfoodhall.com.br"
     },

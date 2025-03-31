@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Linking } from "react-
 import { useNavigation } from "@react-navigation/native";
 import appData from "../storage/appData";
 import { NavigationProps } from "../types/types";
+import colors from "../styles/colors";
 
 export default function HomePage() {
   const navigation = useNavigation<NavigationProps>();
@@ -14,7 +15,7 @@ export default function HomePage() {
   return (
     <View style={styles.container}>
       {/* Banner */}
-      {/* <Image source={require("../assets/foodhall-banner.jpg")} style={styles.banner} /> */}
+      { <Image source={{ uri: appData.food_hall.image }} style={styles.banner} />}
 
       {/* Nome e Endereço */}
       <Text style={styles.title}>{appData.food_hall.name}</Text>
@@ -54,15 +55,14 @@ export default function HomePage() {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, paddingTop: 60, backgroundColor: "#fff", alignItems: "center" },
-  banner: { width: "100%", height: 180, borderRadius: 10, marginBottom: 20 },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 5 },
-  address: { fontSize: 16, color: "#555", marginBottom: 20, textAlign: "center" },
-  button: { backgroundColor: "#ff5733", padding: 10, borderRadius: 8, marginBottom: 10, width: "80%", alignItems: "center" },
-  buttonText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
-  socialTitle: { fontSize: 18, fontWeight: "bold", marginTop: 20 },
+  container: { flex: 1, padding: 20, paddingTop: 60, backgroundColor: colors.background, alignItems: "center" },
+  banner: { width: "100%", height: 180, borderRadius: 10, marginBottom: 20, borderColor: colors.bannerBorder, borderWidth: 1 },
+  title: { fontSize: 24, fontWeight: "bold", marginBottom: 5, color: colors.textPrimary },
+  address: { fontSize: 16, color: colors.textSecondary, marginBottom: 20, textAlign: "center" },
+  button: { backgroundColor: colors.primary, padding: 10, borderRadius: 8, marginBottom: 10, width: "80%", alignItems: "center" },
+  buttonText: { color: colors.buttonText, fontSize: 16, fontWeight: "bold" },
+  socialTitle: { fontSize: 18, fontWeight: "bold", marginTop: 20, color: colors.textPrimary },
   socialContainer: { flexDirection: "row", gap: 15, marginTop: 10 },
-  socialLink: { fontSize: 16, color: "#007AFF" },
+  socialLink: { fontSize: 16, color: colors.secondary },
 });
