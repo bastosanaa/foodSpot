@@ -4,7 +4,9 @@ import { RouteProp } from "@react-navigation/native";
 export type RootStackParamList = {
   HomePage: undefined;
   RestaurantsList: undefined;
-  RestaurantDetails: { restaurant: Restaurant };
+  RestaurantDetails: { restaurant: Restaurant};
+  RestaurantMenu: { restaurant: Restaurant};
+  RestaurantMenuItem: { menuItem: MenuItem};
 };
 
 export type Restaurant = {
@@ -20,14 +22,18 @@ export type Restaurant = {
   email: string;
   delivery_link: string;
   menu_link: string;
-  menu: {
-    name: string;
+  menu: 
+  MenuItem[];
+};
+
+export type MenuItem = {
+  name: string;
     image: string;
     description: string;
     quantity: string;
+    ingredients: string[];
     price: number;
-  }[];
-};
+}
 
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
 
