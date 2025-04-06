@@ -32,19 +32,20 @@ const RestaurantsStack = () => {
         name="RestaurantsList" 
         component={RestaurantsList} 
         options={{ 
-          headerShown: false, // Remove o header
+          headerShown: false,
+          title: ""
         }} 
       />
-      <Stack.Screen name="RestaurantDetails" component={RestaurantDetails} />
-      <Stack.Screen name="RestaurantMenu" component={RestaurantMenu} />
-      <Stack.Screen name="RestaurantMenuItem" component={RestaurantMenuItem} />
+      <Stack.Screen name="RestaurantDetails" component={RestaurantDetails} options={{ title: "" }} />
+      <Stack.Screen name="RestaurantMenu" component={RestaurantMenu} options={{ title: "" }} 
+      />
+      <Stack.Screen name="RestaurantMenuItem" component={RestaurantMenuItem} options={{ title: "" }} />
     </Stack.Navigator>
   );
 };
 
 const TabNavigator = () => {
   return (
-    <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
@@ -74,7 +75,6 @@ const TabNavigator = () => {
         <Tab.Screen name="Restaurants" component={RestaurantsStack} />
         <Tab.Screen name="Cart" component={RestaurantsStack} />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 };
 

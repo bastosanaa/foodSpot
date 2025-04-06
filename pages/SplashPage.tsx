@@ -2,25 +2,16 @@ import React, { useEffect } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationProps } from "../types/types";
+import colors from "../styles/colors";
 
 export default function SplashPage() {
-  const navigation = useNavigation<NavigationProps>();
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigation.navigate("HomePage"); 
-    }, 3000); 
-
-    return () => clearTimeout(timer);
-  }, [navigation]);
 
   return (
     <View style={styles.container}>
       <Image
-        source={require("../assets/logo.png")}
+        source={require("../assets/logo-name.png")}
         style={styles.logo}
       />
-      <Text style={styles.text}>Bem-vindo ao Food Spot</Text>
     </View>
   );
 };
@@ -30,11 +21,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: colors.background,
   },
   logo: {
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 300,
     resizeMode: "contain",
   },
   text: {

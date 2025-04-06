@@ -10,6 +10,13 @@ export default function RestaurantsList() {
 
   return (
     <View style={styles.container}>
+        <View style={styles.header}>
+              <Image
+                source={require("../assets/logo-name.png")}
+                style={styles.logo}
+              />
+              <Text style={styles.title}>Nossos Restaurantes</Text>
+        </View>
       <FlatList
         data={appData.stores}
         keyExtractor={(item) => item.name}
@@ -28,7 +35,7 @@ export default function RestaurantsList() {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 60,
+    paddingTop: 100,
     flex: 1,
     backgroundColor: colors.background,
     padding: 16,
@@ -41,15 +48,29 @@ const styles = StyleSheet.create({
     alignItems: "center",
     elevation: 3,
   },
-  logo: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    marginBottom: 8,
-  },
   name: {
     fontSize: 18,
     fontWeight: "bold",
     color: colors.textPrimary,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: colors.textPrimary,
+    flex: 1,
+  },
+  logo: {
+    width: 60,
+    height: 60,
+    resizeMode: "contain",
+  },  
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    marginBottom: 20,
+    paddingLeft: 20, 
+    paddingRight: 30
   },
 });
