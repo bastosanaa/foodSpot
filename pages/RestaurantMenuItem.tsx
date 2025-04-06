@@ -1,8 +1,9 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../types/types";
 import colors from "../styles/colors";
+import appData from "../storage/appData";
 
 // filepath: /home/nascido/Repos/UFSC_4fase/Embarcados/A01/foodSpot/pages/RestaurantMenuItem.tsx
 
@@ -30,6 +31,12 @@ export default function RestaurantMenuItem() {
             <Text style={styles.sectionTitle}>Quantidade:</Text>
             <Text style={styles.quantity}>{menuItem.quantity}</Text>
             <Text style={styles.price}>Preço: R$ {menuItem.price.toFixed(2)}</Text>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={() => {}}
+            >
+                <Text style={styles.buttonText}>Adicionar ao carrinho</Text>
+            </TouchableOpacity>
         </ScrollView>
     );
 }
@@ -42,7 +49,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: "100%",
-        height: 200,
+        height: 220,
         borderRadius: 10,
         marginBottom: 20,
     },
@@ -63,7 +70,7 @@ const styles = StyleSheet.create({
     description: {
         fontSize: 16,
         color: colors.textSecondary,
-        marginBottom: 20,
+        marginBottom: 10,
         textAlign: "justify",
     },
     sectionTitle: {
@@ -81,7 +88,7 @@ const styles = StyleSheet.create({
     quantity: {
         fontSize: 16,
         color: colors.textSecondary,
-        marginBottom: 20,
+        marginBottom: 10,
     },
     price: {
         fontSize: 20,
@@ -89,5 +96,19 @@ const styles = StyleSheet.create({
         color: colors.primary,
         textAlign: "center",
         marginTop: 20,
+        marginBottom: 20,
     },
+    button: {
+        backgroundColor: colors.primary,
+        padding: 12,
+        borderRadius: 8,
+        marginBottom: 50,
+        width: "100%",
+        alignItems: "center",
+      },
+      buttonText: {
+        color: colors.buttonText,
+        fontSize: 16,
+        fontWeight: "bold",
+      },
 });

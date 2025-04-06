@@ -12,7 +12,7 @@ export default function RestaurantsList() {
     <View style={styles.container}>
         <View style={styles.header}>
               <Image
-                source={require("../assets/logo-name.png")}
+                source={require("../assets/logo.png")}
                 style={styles.logo}
               />
               <Text style={styles.title}>Nossos Restaurantes</Text>
@@ -25,7 +25,7 @@ export default function RestaurantsList() {
             style={styles.card} 
             onPress={() => navigation.navigate("RestaurantDetails", { restaurant: item })}
           >
-            <Image source={{ uri: item.logo }} style={styles.logo} />
+            <Image source={{ uri: item.logo }} style={styles.restaurantLogo} />
             <Text style={styles.name}>{item.name}</Text>
           </TouchableOpacity>
         )}
@@ -48,10 +48,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     elevation: 3,
   },
+  restaurantLogo: {
+    width: 80,
+    height: 80,
+  },
   name: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
     color: colors.textPrimary,
+    marginTop: 12
   },
   title: {
     fontSize: 24,

@@ -26,7 +26,7 @@ export default function EventsPage() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require("../assets/logo-name.png")}
+          source={require("../assets/logo.png")}
           style={styles.logo}
         />
         <Text style={styles.title}>Eventos do FoodPark</Text>

@@ -6,14 +6,21 @@ import {
   Image,
   TouchableOpacity,
   Linking,
+  ScrollView,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import appData from "../storage/appData";
-import { NavigationProps } from "../types/types";
 import colors from "../styles/colors";
+import {
+  MapPin,
+  Phone,
+  MessageCircle,
+  Globe,
+  Mail,
+  Instagram,
+  Facebook,
+} from "lucide-react-native";
 
 export default function HomePage() {
-  const navigation = useNavigation<NavigationProps>();
 
   const openLink = (url: string) => {
     Linking.openURL(url).catch((err) =>
@@ -22,53 +29,66 @@ export default function HomePage() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       {/* Banner */}
-      {
-        <Image
-          source={{ uri: appData.food_hall.image }}
-          style={styles.banner}
-        />
-      }
+      <Image
+        source={{ uri: appData.food_hall.image }}
+        style={styles.banner}
+      />
 
       {/* Nome e Endereço */}
       <Text style={styles.title}>{appData.food_hall.name}</Text>
-      <Text style={styles.address}>{appData.food_hall.address}</Text>
+      <View style={styles.row}>
+        <MapPin color={colors.primary} size={20} />
+        <Text style={styles.address}>{appData.food_hall.address}</Text>
+      </View>
 
       {/* Botões de Contato */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => openLink(appData.food_hall.map_location)}
       >
-        <Text style={styles.buttonText}>📍 Ver no Mapa</Text>
+        <Text style={styles.buttonText}>Ver no Mapa</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.button}
         onPress={() => openLink(`tel:${appData.food_hall.phone}`)}
       >
-        <Text style={styles.buttonText}>📞 Ligar</Text>
+        <View style={styles.iconRow}>
+          <Phone color={colors.buttonText} size={18} />
+          <Text style={styles.buttonText}>Ligar</Text>
+        </View>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.button}
         onPress={() => openLink(appData.food_hall.whatsapp)}
       >
-        <Text style={styles.buttonText}>💬 WhatsApp</Text>
+        <View style={styles.iconRow}>
+          <MessageCircle color={colors.buttonText} size={18} />
+          <Text style={styles.buttonText}>WhatsApp</Text>
+        </View>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.button}
         onPress={() => openLink(appData.food_hall.website)}
       >
-        <Text style={styles.buttonText}>🌍 Website</Text>
+        <View style={styles.iconRow}>
+          <Globe color={colors.buttonText} size={18} />
+          <Text style={styles.buttonText}>Website</Text>
+        </View>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.button}
         onPress={() => openLink(`mailto:${appData.food_hall.email}`)}
       >
-        <Text style={styles.buttonText}>✉️ E-mail</Text>
+        <View style={styles.iconRow}>
+          <Mail color={colors.buttonText} size={18} />
+          <Text style={styles.buttonText}>E-mail</Text>
+        </View>
       </TouchableOpacity>
 
       {/* Redes Sociais */}
@@ -77,24 +97,24 @@ export default function HomePage() {
         <TouchableOpacity
           onPress={() => openLink(appData.food_hall.social_media.instagram)}
         >
-          <Text style={styles.socialLink}>📷 Instagram</Text>
+          <Instagram color={colors.secondary} size={26} />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => openLink(appData.food_hall.social_media.facebook)}
         >
-          <Text style={styles.socialLink}>📘 Facebook</Text>
+          <Facebook color={colors.secondary} size={26} />
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    alignItems: "center",
     padding: 20,
     paddingTop: 100,
     backgroundColor: colors.background,
-    alignItems: "center",
   },
   banner: {
     width: "100%",
@@ -109,28 +129,50 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 5,
     color: colors.textPrimary,
+    textAlign: "center",
   },
   address: {
     fontSize: 16,
     color: colors.textSecondary,
     marginBottom: 20,
-    textAlign: "center",
+    marginLeft: 8,
+    flexShrink: 1,
+    // flex: 1
+  },
+  row: {
+    flexDirection: "row",
+    // alignItems: "center",
+    marginBottom: 10,
+    paddingHorizontal: 10,
+    paddingLeft: 35
+  },
+  iconRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
   },
   button: {
     backgroundColor: colors.primary,
-    padding: 10,
+    padding: 12,
     borderRadius: 8,
     marginBottom: 10,
     width: "80%",
     alignItems: "center",
   },
-  buttonText: { color: colors.buttonText, fontSize: 16, fontWeight: "bold" },
+  buttonText: {
+    color: colors.buttonText,
+    fontSize: 16,
+    fontWeight: "bold",
+  },
   socialTitle: {
     fontSize: 18,
     fontWeight: "bold",
     marginTop: 20,
     color: colors.textPrimary,
   },
-  socialContainer: { flexDirection: "row", gap: 15, marginTop: 10 },
-  socialLink: { fontSize: 16, color: colors.secondary },
+  socialContainer: {
+    flexDirection: "row",
+    gap: 20,
+    marginTop: 10,
+  },
 });
