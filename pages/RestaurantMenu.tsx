@@ -6,8 +6,6 @@ import { useNavigation } from "@react-navigation/native";
 import { NavigationProps } from "../types/types";
 import colors from "../styles/colors";
 
-// filepath: /home/nascido/Repos/UFSC_4fase/Embarcados/A01/foodSpot/pages/RestaurantMenu.tsx
-
 type RestaurantMenuRouteProp = RouteProp<RootStackParamList, "RestaurantMenu">;
 
 export default function RestaurantMenu() {

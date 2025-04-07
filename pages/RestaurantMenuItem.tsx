@@ -6,11 +6,12 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Alert
 } from "react-native";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../types/types";
 import colors from "../styles/colors";
-import { ShoppingCart } from "lucide-react-native"; // ← aqui!
+import { ShoppingCart } from "lucide-react-native";
 import appData from "../storage/appData";
 import { saveCart, loadCart } from "../storage/cartStorage";
 
@@ -27,7 +28,6 @@ export default function RestaurantMenuItem() {
     try {
       const currentCart = await loadCart();
   
-      // Verifica se o item já está no carrinho (comparando pelo nome ou ID)
       const existingIndex = currentCart.findIndex(
         (item) => item.name === menuItem.name
       );
@@ -35,15 +35,13 @@ export default function RestaurantMenuItem() {
       let updatedCart = [...currentCart];
   
       if (existingIndex !== -1) {
-        // Item já existe → incrementa a quantidade
         updatedCart[existingIndex].quantity += 1;
       } else {
-        // Novo item → adiciona com quantity: 1
         updatedCart.push({ ...menuItem, quantity: 1 });
       }
   
       await saveCart(updatedCart);
-      alert("Item adicionado ao carrinho!");
+    Alert.alert("Pedido Atualizado",  `O item "${menuItem.name}" foi adicionado ao seu carrinho! `);
     } catch (error) {
       console.error("Erro ao adicionar ao carrinho:", error);
     }

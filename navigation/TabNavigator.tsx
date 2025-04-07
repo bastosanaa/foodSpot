@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons"; // Ícones para a navbar
+import { Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomePage from "../pages/HomePage";
 import RestaurantsList from "../pages/RestaurantsList";
@@ -22,11 +22,11 @@ const RestaurantsStack = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: { 
-          backgroundColor: colors.background, // Cor de fundo do header
-          borderBottomColor: colors.lightGrey, // Cor da borda inferior do header
-          borderBottomWidth: 1, // Define a largura da borda inferior
+          backgroundColor: colors.background, 
+          borderBottomColor: colors.lightGrey, 
+          borderBottomWidth: 1, 
         },
-        headerTintColor: colors.lightGrey, // Cor do texto no header
+        headerTintColor: colors.lightGrey, 
       }}
     >
       <Stack.Screen 
@@ -65,10 +65,10 @@ const TabNavigator = () => {
             }
             return <Ionicons name={iconName as any} size={size} color={color} />;
           },
-          tabBarActiveTintColor: colors.primary, // Cor do ícone ativo
+          tabBarActiveTintColor: colors.primary, 
           tabBarInactiveTintColor: colors.lightGrey,
-          tabBarStyle: { backgroundColor: colors.background , borderColor: colors.grey}, // Cor de fundo da tabbar
-          headerShown: false, // Oculta a barra superior
+          tabBarStyle: { backgroundColor: colors.background , borderColor: colors.grey}, 
+          headerShown: false, 
         })}
       >
         <Tab.Screen name="Home" component={HomePage} />

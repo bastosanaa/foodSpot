@@ -32,7 +32,7 @@ export default function EventsPage() {
         <Text style={styles.title}>Eventos do FoodPark</Text>
       </View>
       <FlatList
-        data={appData.events} // Pegando os eventos do appData
+        data={appData.events} 
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.eventCard}>

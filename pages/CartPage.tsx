@@ -9,10 +9,11 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import colors from "../styles/colors";
 import { ShoppingCart, Trash2 } from "lucide-react-native";
-import { loadCart, saveCart } from "../storage/cartStorage";
+import { loadCart, saveCart, clearCart } from "../storage/cartStorage";
 
 export default function CartScreen() {
   const [cartItems, setCartItems] = useState<any[]>([]);
@@ -28,7 +29,7 @@ export default function CartScreen() {
         const storedCart = await loadCart();
         setCartItems(storedCart);
       };
-  
+
       fetchCart();
     }, [])
   );
@@ -38,6 +39,12 @@ export default function CartScreen() {
     updatedCart.splice(indexToRemove, 1);
     setCartItems(updatedCart);
     await saveCart(updatedCart);
+  };
+
+  const handleCheckout = async () => {
+    await clearCart();
+    setCartItems([]);
+    Alert.alert("Pedido Enviado", "Seu pedido foi enviado!");
   };
 
   return (
@@ -69,7 +76,7 @@ export default function CartScreen() {
 
       <View style={styles.footer}>
         <Text style={styles.total}>Total: R$ {total.toFixed(2)}</Text>
-        <TouchableOpacity style={styles.checkoutButton}>
+        <TouchableOpacity style={styles.checkoutButton} onPress={handleCheckout}>
           <Text style={styles.checkoutText}>Finalizar Pedido</Text>
         </TouchableOpacity>
       </View>
