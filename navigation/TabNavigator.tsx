@@ -11,6 +11,7 @@ import RestaurantMenuItem from "../pages/RestaurantMenuItem";
 import SplashPage from "../pages/SplashPage";
 import EventsPage from "../pages/EventsPage";
 import colors from "../styles/colors";
+import CartPage from "../pages/CartPage";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -53,11 +54,11 @@ const TabNavigator = () => {
 
             if (route.name === "Home") {
               iconName = "home";
-            } else if (route.name === "Restaurants") {
+            } else if (route.name === "Restaurantes") {
               iconName = "restaurant";
-            } else if (route.name === "Events") {
+            } else if (route.name === "Eventos") {
               iconName = "musical-notes";
-            } else if(route.name === "Cart"){
+            } else if(route.name === "Carrinho"){
               iconName = "cart"
             } else{
               iconName = "ellipse";
@@ -71,9 +72,9 @@ const TabNavigator = () => {
         })}
       >
         <Tab.Screen name="Home" component={HomePage} />
-        <Tab.Screen name="Events" component={EventsPage} />
-        <Tab.Screen name="Restaurants" component={RestaurantsStack} />
-        <Tab.Screen name="Cart" component={RestaurantsStack} />
+        <Tab.Screen name="Eventos" component={EventsPage} />
+        <Tab.Screen name="Restaurantes" component={RestaurantsStack}/>
+        <Tab.Screen name="Carrinho" component={CartPage} />
       </Tab.Navigator>
   );
 };

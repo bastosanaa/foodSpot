@@ -9,6 +9,7 @@ const colors = {
     buttonText: "#ffffff", // Cor do texto dos botões
     bannerBorder: "#cccccc", // Cor da borda do banner (se necessário)
     grey: "#2C2C2E",
+    red: "#FF6B6B",
     lightGrey: "#8E8E93"
 };
 
